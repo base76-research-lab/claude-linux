@@ -1,77 +1,95 @@
-# claude-linux-desktop
+# Claunux
 
-> Native Linux desktop-app för Claude AI — med MCP, lokal agent-integration och Anthropic cowork-potential.
+> A native Linux desktop app for Claude AI — with MCP support, local agent integration, and Anthropic cowork potential.
 
-**Status:** Idé — 2026-03-03
-**Källa:** Claude76 + Björn, session om armada-arkitektur
+**Status:** MVP running — 2026-03-03
+**Built by:** Base76 Research Lab
 
----
-
-## Kärntanken
-
-Anthropic har desktop-app för Mac och Windows. Linux saknas. Ingen officiell plan synlig.
-
-Bygg det vi vet att Linux-communityn vill ha — och gör det på ett sätt som Anthropic *kan* adoptera eller samarbeta kring.
+<p align="center">
+  <img src="src/claunux.png" alt="Claunux" width="180" />
+</p>
 
 ---
 
-## Vad som skiljer den från en webbläsar-wrapper
+## Why this exists
 
-1. **MCP-integration native** — konfigurera och kör MCP-servrar direkt i appen
-2. **Lokal agent-sidebar** — armada-status, Self-entries, eskaleringar i realtid bredvid chatten
-3. **System tray** — Claude alltid tillgänglig, en tangentbordsgenväg
-4. **Filsystem-kontext** — dra in filer/mappar direkt, inte via copy-paste
-5. **Offline-läge** — fallback till lokal modell (Ollama) när ingen uppkoppling
-6. **Tight Linux-integration** — D-Bus, notifications, Wayland/X11
+Anthropic ships desktop apps for Mac and Windows. Linux users get nothing.
+
+Claunux is what the Linux community deserves: a real native app — not a browser wrapper — built with the same care as the official clients.
 
 ---
 
-## Inloggning — dual mode
+## What makes it different from a browser tab
 
-**Vem kan använda appen:**
-- Alla med Claude-konto (Free, Pro, Team) — loggar in via claude.ai i inbäddad WebView
-- Claude Code-användare — samma inloggning
-- Developers — API-nyckel direkt
+1. **Native MCP integration** — configure and run MCP servers directly in the app
+2. **Agent sidebar** — real-time status from local AI agents alongside your chat
+3. **System tray** — Claude always available, one keyboard shortcut away
+4. **Filesystem context** — drag files/folders into context, no copy-paste
+5. **Offline fallback** — routes to local model (Ollama) when disconnected
+6. **Tight Linux integration** — D-Bus, notifications, Wayland/X11
+
+---
+
+## Login — dual mode
+
+**Who can use it:**
+- Anyone with a Claude account (Free, Pro, Team) — login via embedded claude.ai WebView
+- Claude Code users — same login
+- Developers — API key directly
 
 ```
-Välj vid start:
-  [A] API-nyckel       ← developers, powerusers
-  [B] Logga in med claude.ai  ← alla andra med Claude-konto
+Choose at startup:
+  [A] API key          ← developers, power users
+  [B] Log in with claude.ai  ← anyone with a Claude account
 ```
 
-Mode B = ingen teknisk setup. Vem som helst som betalar för Claude idag och kör Linux kan använda appen direkt. Det är det som gör den till en produkt, inte ett dev tool.
-
-Mode B öppnar också dörren för Anthropic att ge ett riktigt OAuth-flöde i ett samarbete.
+Mode B requires zero technical setup. Anyone paying for Claude today who runs Linux can use the app immediately. That's what makes it a product, not a dev tool.
 
 ---
 
-## Teknikval
+## Tech
 
-**Tauri** (Rust + WebView)
-- ~10MB binär vs Electrons ~150MB
-- Linux-communityn uppskattar det
-- Rust-backend = säkert, snabbt, paketeras enkelt som .deb/.AppImage/.flatpak
-
----
-
-## Spinn-potential
-
-- Linux-communities (HN, Reddit/r/linux, lobste.rs) reagerar starkt
-- Anthropic får argument för officiellt samarbete — kontakt finns via research-mailet
-- Base76-varumärket = "den som bygger det Anthropic inte hinner"
-- OSS → community driver vidare, Anthropic kan adoptera
+**Tauri 2** (Rust + WebView + Svelte)
+- ~10MB binary vs Electron's ~150MB
+- Linux-native: packages as `.deb`, `.AppImage`, `.flatpak`
+- Rust backend = fast, secure, memory-safe
 
 ---
 
-## Risk
+## Running locally
 
-Anthropic lanserar Linux-app själva. Motargument: du har visat leveransförmåga i deras ekosystem.
+```bash
+# Prerequisites
+sudo apt-get install -y libssl-dev pkg-config libwebkit2gtk-4.1-dev
+
+# Install
+git clone https://github.com/base76-research-lab/claunux.git
+cd claunux
+npm install
+cargo install tauri-cli --version "^2"
+
+# Run (requires ANTHROPIC_API_KEY)
+export ANTHROPIC_API_KEY=your_key_here
+cargo tauri dev
+```
 
 ---
 
-## Nästa steg (när energi finns)
+## Roadmap
 
-- [ ] Sätt upp Tauri-projekt på GitHub (base76-research-lab/claude-linux-desktop)
-- [ ] Bygg MVP: chat-vy + MCP-konfiguration + system tray
-- [ ] HN-post: "I built a Linux desktop app for Claude because Anthropic hasn't"
-- [ ] Kontakta Anthropic med demo — föreslå cowork
+- [x] Chat view + Anthropic API
+- [x] Claunux logo + sidebar navigation
+- [x] Dark mode, custom titlebar
+- [ ] MCP server configuration panel
+- [ ] File/folder drag-and-drop into context
+- [ ] System tray + keyboard shortcut
+- [ ] Login via claude.ai WebView (Mode B)
+- [ ] Offline fallback to Ollama
+
+---
+
+## About
+
+Built by [Base76 Research Lab](https://github.com/base76-research-lab) — building what Anthropic hasn't gotten to yet.
+
+Interested in collaborating? Open an issue or reach out.

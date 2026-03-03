@@ -1,0 +1,32 @@
+{
+  "identifier": "com.base76.claunux",
+  "productName": "Claunux",
+  "version": "0.1.0",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Claunux",
+        "width": 900,
+        "height": 680,
+        "minWidth": 600,
+        "minHeight": 400,
+        "decorations": false
+      }
+    ],
+    "trayIcon": {
+      "iconPath": "icons/icon.png",
+      "tooltip": "Claunux"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "icon": ["icons/icon.png"]
+  }
+}

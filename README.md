@@ -83,7 +83,7 @@ cargo tauri dev
 - [x] AppImage + .deb + .rpm packaging — [v0.1.0 release](https://github.com/base76-research-lab/claunux/releases/tag/v0.1.0)
 - [ ] Flathub submission *(PR open)*
 - [x] MCP server configuration panel
-- [ ] File/folder drag-and-drop into context
+- [x] File/folder drag-and-drop into context
 - [ ] System tray + keyboard shortcut
 - [x] Login via claude.ai WebView (Mode B)
 - [ ] Offline fallback to Ollama

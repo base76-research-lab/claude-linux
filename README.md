@@ -80,6 +80,8 @@ cargo tauri dev
 - [x] Chat view + Anthropic API
 - [x] Claunux logo + sidebar navigation
 - [x] Dark mode, custom titlebar
+- [x] AppImage + .deb + .rpm packaging — [v0.1.0 release](https://github.com/base76-research-lab/claunux/releases/tag/v0.1.0)
+- [ ] Flathub submission *(PR open)*
 - [ ] MCP server configuration panel
 - [ ] File/folder drag-and-drop into context
 - [ ] System tray + keyboard shortcut
